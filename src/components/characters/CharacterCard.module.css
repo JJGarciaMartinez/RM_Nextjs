@@ -1,0 +1,181 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: fit-content;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 0.75rem;
+  background-color: var(--background);
+}
+
+.card.favorite {
+  border-color: rgb(67 57 242 / 0.5);
+}
+
+.card.favorited,
+.compactCard.favorited {
+  border: 2px solid var(--primary-app);
+  box-shadow: 0 0 0 2px rgb(67 57 242 / 0.1);
+}
+
+.imageContainer {
+  border-radius: 0.5rem;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.characterNameContainer {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--card-foreground);
+  margin: 0;
+  line-height: 1.3;
+  width: 100%;
+  overflow: hidden;
+}
+
+.name {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.02rem;
+}
+
+.favoriteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--background-2);
+  border: none;
+  color: var(--primary-app);
+  transition: all 0.2s;
+
+  &:hover {
+    filter: brightness(98%);
+    cursor: pointer;
+  }
+
+  &:active {
+    filter: brightness(95%);
+    cursor: pointer;
+    transform: scale(0.99);
+  }
+}
+
+.favoriteButton.overlay {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+  background-color: rgb(255 255 255 / 0.9);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
+}
+
+.heartIcon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.favoriteButton.overlay .heartIcon {
+  font-size: 1.125rem;
+}
+
+.favoriteButton.active .heartIcon {
+  color: var(--primary);
+}
+
+/* Compact variant */
+.compactCard {
+  overflow: hidden;
+}
+
+.compactBody {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+}
+
+.compactImage {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.compactInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.compactHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.compactName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--card-foreground);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compactSpecies {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
