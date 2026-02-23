@@ -7,6 +7,7 @@ export interface SkeletonProps {
   width?: string | number
   height?: string | number
   animation?: 'pulse' | 'wave' | 'none'
+  style?: React.CSSProperties
 }
 
 export function Skeleton({
@@ -15,10 +16,12 @@ export function Skeleton({
   width,
   height,
   animation = 'pulse',
+  style: customStyle,
 }: SkeletonProps) {
   const style: React.CSSProperties = {
     width: width ?? undefined,
     height: height ?? undefined,
+    ...customStyle,
   }
 
   return (
