@@ -1,8 +1,7 @@
 'use client'
-
 import styles from './page.module.css'
 import { SearchBar } from '@/components/search'
-import React, { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import { useCharacters, useUserId, useFavorites } from '@/hooks'
 import { CharacterList } from '@/components/characters'
 import { Button, Pagination } from '@/components/ui'
@@ -11,7 +10,7 @@ import { RMCharacter } from '@/types'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { CharacterDetailsModal } from '@/components/characters'
 
-export default function Home() {
+function HomeContent() {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -145,5 +144,13 @@ export default function Home() {
         onToggleFavorite={handleCharacterFavorite}
       />
     </div>
+  )
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <HomeContent />
+    </Suspense>
   )
 }
